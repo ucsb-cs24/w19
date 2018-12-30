@@ -42,7 +42,7 @@ kramdown:
 exclude:
    - vendor
 include:
-   - _pages
+  - _pages
 
 timezone: America/Los_Angeles
 

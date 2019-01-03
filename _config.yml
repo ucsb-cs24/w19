@@ -56,9 +56,9 @@ collections:
     permalink: /lab/:path/
     last_before: false
   pa:
-      output: true
-      permalink: /pa/:path/
-      last_before: false
+    output: true
+    permalink: /pa/:path/
+    last_before: false
   exam:
     output: true
     permalink: /exam/:path/

@@ -114,11 +114,7 @@ You may NOT:
 
 ## Late Lab Policy
 
-The policy is simple, and is based on the idea that the primary purpose of the deadlines is to allow the TA manage his/her workload. The number of labs in this course requires that he/she not have to do "context switching" between grading different labs. All labs must be graded in one sitting, or he/she just won't be able to keep up with the workload.
-So:
-* If you want your work to be graded without penalty, turn it in on time.
-* If you turn in your lab late, you RISK GETTING A ZERO. However, we will use your best submission until grades are uploaded to gauchospace.
-* There is NO GUARANTEE that late labs will be graded at all. The TA will simply start work at some point after the deadline, and grade until he/she is finished. At that time, he/she will "close the books" on that particular lab, and any work not submitted at that time will NOT be considered.
+As a general rule, you may submit your labs one day past the deadline for a 10% deduction. You are responsible to make sure you have the correct score for your assignments prior to the due date. This is specially important if you are working with a programming partner.
 
 
 ## Disclaimer

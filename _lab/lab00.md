@@ -34,7 +34,7 @@ If you are enrolled in <i>any</i> CoE course this quarter (including CS24), you 
 
 ## Get setup with github
 
-We will be using github.com in this course.   We have created an organization called ucsb-cs24-s18 on github.com where you can create repositories (repos) for your assignments in this course.   The advantage of creating private repos under that organization is that the course staff (your instructors, TAs and mentors) will be able to see your code and provide you with help, without you having to do anything special.
+We will be using github.com in this course.   We have created an organization called ucsb-cs24-w19-mirza on github.com where you can create repositories (repos) for your assignments in this course.   The advantage of creating private repos under that organization is that the course staff (your instructors, TAs and mentors) will be able to see your code and provide you with help, without you having to do anything special.
 
 To join this organization, you need to do three things.
 
@@ -75,7 +75,7 @@ If you are using a Windows, you will need to install the program
 [MobaXterm](https://mobaxterm.mobatek.net/)
 
 For more information on how to ssh, please refer to Step 1 of lab00 from
-cs16: [https://ucsb-cs16-s18-mirza.github.io/lab/lab00/](https://ucsb-cs16-s18-mirza.github.io/lab/lab00/)
+cs16: [https://ucsb-cs16-w19-mirza.github.io/lab/lab00/](https://ucsb-cs16-w19-mirza.github.io/lab/lab00/)
 
 You'll get much better performance on those individual machines, because they are much less heavily loaded and have newer hardware, as compared to `csil.cs.ucsb.edu`.
 

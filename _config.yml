@@ -14,7 +14,11 @@ title: "UCSB CS24 W19"
 github_url: https://github.com/ucsb-cs24/w19
 qtr: "W19"
 quarter: "Winter 2019"
-
+lecture_times: "MW 2:00pm - 3:15pm"
+lecture_location: "PSYCH 1924"
+lab_times: "Mondays: 9a, 10a, 11a, noon"
+tas: "Sierra Schwellenbach, Dheeraj  Baby"
+tutors: "Ekta  Shahani, George Kripac, Kaushik Mahorker, Richa Wadaskar, Justin  Akrami"
 class_org:
    name: ucsb-cs24-w19-mirza 
    url: https://github.com/ucsb-cs24-w19-mirza

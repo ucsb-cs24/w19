@@ -9,25 +9,37 @@ ready: true
 This document and others linked within it should be your PRIMARY source for understanding the expectations of this course. Be sure to read it *carefully*.
 You must contact the instructor for clarification if you receive information from any another source that is in contradiction to what is provided below.
 
-# Schedule <a name="schedule"></a>
+## Basic Facts
 
-For lab, lecture and office hours please check the [course Google Calendar](/info/schedule/)
-For hw, lab and exam schedule, please check the [assignment calendar](/info/calendar/)
+* **Course Web Site**: <{{ site.url}}>
+* **Instructor**:  [Diba Mirza](http://www.cs.ucsb.edu/~dimirza)
+* **Lecture**: {{ site.lecture_times}}, {{ site.lecture_location}}
+* **TAs**: {{ site.tas}}
+* **Tutors**: {{site.tutors}}
+* **Lab** (50 minute closed lab sections), {{ site.lab_times}} ATTENDANCE REQUIRED if you are working with a pair partner. 
 
 
-# Grading
+# Resources
 
-## Grade breakup by evaluation component
+## Required Resources
 
-* Lecture and section partcipation: 2%
-* Homeworks: 8%
-* Lab assignments: 20%
+* Required textbook: Michael Main and Walter Savitch. Data Structures and Other Objects Using C++ (4th edition), Addison-Wesley, 2011.
+
+* Recommended textbook: Problem Solving with C++, Walter Savitch, Edition 10 (edition 9 also works). Available for purchase at the UCSB book store
+
+* Peer Instruction : iClickers: The course lectures will follow a Peer Instruction format, a teaching model which places stronger emphasis on classroom discussion and student interaction. 
+
+
+# Graded Work and Grade Policy
+
+## Evaluation components
+
+* Homeworks: 10%
+* Lab assignments: 14%
 * Projects: 20%
-* Midterm Exams: 20%
-* Final Examination : 30%
+* Midterm Exams: 26%
+* Final Examination: 30%
 
-
-Thus <strong>attendance is required</strong>, and <strong>reading the assigned readings is required.</strong>
 
 ## Grade assignment policy
 
@@ -74,16 +86,6 @@ Thus <strong>attendance is required</strong>, and <strong>reading the assigned r
 <strong>Curving: </strong>The grade  scale above represents the <em>minimum</em> letter grade you will be assigned&#8212;at the instructor's discretion, the grading scale  may be altered <em>in the students' favor</em> if this will be better reflect the students' mastery of the material. Thus, <em>if</em> there is a &quot;curve&quot;, it will be applied at the <em>end</em>, not to individual assignments.</p>
 <p><strong>A+ grades: </strong>These may be awarded to the very best performing students in the class—but the cutoff for A+ grades will be determined at the end of the course at the discretion of the instructor (there is no pre-determined cutoff---an average of 97 or more doesn't guarantee you an A+ grade.)
 
-
-# Resources
-
-## Required Resources
-
-* Required textbook: Michael Main and Walter Savitch. Data Structures and Other Objects Using C++ (4th edition), Addison-Wesley, 2011.
-
-* Recommended textbook: Problem Solving with C++, Walter Savitch, Edition 10 (edition 9 also works). Available for purchase at the UCSB book store
-
-* Peer Instruction : iClickers: The course lectures will follow a Peer Instruction format, a teaching model which places stronger emphasis on classroom discussion and student interaction. As part of this you will need to own an iClicker register it on the [Gauchospace](). Be sure to register your clicker by the end of the first week.
 
 
 ## What you should know to be ready for CS24

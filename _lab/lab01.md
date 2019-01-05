@@ -1,7 +1,7 @@
 ---
 layout: lab
 num: lab01
-ready: true
+ready: false
 desc: "Define implement and apply a C++ class  "
 assigned: 2019-01-10 9:00:00.00-8
 due: 2019-01-17 23:59:00.00-8

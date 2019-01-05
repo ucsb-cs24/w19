@@ -1,22 +1,26 @@
 ---
-title: Lecture, lab, office hours
-desc: "Lecture, open labs, office hours, TA office location"
+title: Lab, office hours
+desc: "Getting help: TA/Tutor lab hours and Professor Office hours"
 layout: default
 ---
 
-# Schedule <a name="schedule"></a>
 
-* **Lecture**: Mon and Wed 9:30am-10:45am CHEM 1171, ATTENDANCE REQUIRED.
-* **Lab**:(50 minute discussion sections) Tuesdays starting at 3p, 4p, 5p, 6p in PHELPS 3525, ATTENDANCE REQUIRED.
+# Professor Mirza's Office Hours
 
-* **Open labs**: All open labs will be held in Phelps 3525. Please see [the detailed open lab schedule](/info/cs24_open_lab_hours/)
+* Thursdays, 4p - 5p, Fridays: 2p - 3p, or by appointment
+* Location: HFH 1155
 
-See the complete schedule on our Google Calendar
+# Lab Hours
 
-## Schedule of lectures, open lab hours and office hours.
+* "Closed" labs refer to your sections that you are registered for on GOLD. These are (50 minute discussion sections) and will be held on {{site.lab_times}} in PHELPS 3525
+* ATTENDANCE is REQUIRED in closed labs if you are working with a pair partner.
+* Open" labs refer to times that you can get help from TAs and tutors outside of your scheduled labs. Open labs will be held in the evenings in Phelps 3525 on Mondays (same day as closed labs), and in Phelps 2510 on all other days. Please check the detailed schedule below:
 
-Please check for updates on our Google calendar on a daily basis.
+<style>
+iframe { width: 100%;height:880px; overflow: scroll; }  
+</style>
 
-<iframe src="https://calendar.google.com/calendar/embed?mode=WEEK&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=ucsb.edu_8f7d469enjhkh02bbbs3jnbo1g%40group.calendar.google.com&amp;color=%23691426&amp;ctz=America%2FLos_Angeles" style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+ 
+<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSg2XGFCZeRuZrWDMZcCpTT9ZX_ww54DCKuFrSRxmc-iCRMRWYxOASBGnRKQbUhxHFuM4NMOgNltx_5/pubhtml?gid=88734698&single=true"></iframe>
 
 

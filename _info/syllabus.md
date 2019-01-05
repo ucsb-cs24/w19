@@ -35,9 +35,9 @@ You must contact the instructor for clarification if you receive information fro
 ## Evaluation components
 
 * Homeworks: 10%
-* Lab assignments: 14%
+* Lab assignments: 15%
 * Projects: 20%
-* Midterm Exams: 26%
+* Midterm Exams: 25%
 * Final Examination: 30%
 
 

@@ -1,7 +1,7 @@
 ---
 num: "lect05"
-desc: "Linked-lists (lab03) "
-ready: true
+desc: "Linked-lists (lab02, intro to pa02) "
+ready: false
 pdfurl: /lectures/CS24_Lecture5.pdf
 annotatedpdfurl: /lectures/CS24_Lecture5_ann.pdf
 annotatedready: false
@@ -23,3 +23,4 @@ lecture_date: 2019-01-23
 * Iterating through a list
 * Modifying a list (appending elements to the end)
 * Linked lists as an ADT (implementation using classes)
+* Revisit the big four for linked list

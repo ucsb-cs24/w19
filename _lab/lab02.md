@@ -2,543 +2,347 @@
 layout: lab
 num: lab02
 ready: false
-desc: "Using g++, make and gdb"
-assigned: 2019-01-17 9:00:00.00-8
-due: 2019-01-24 23:59:00.00-8
+desc: "Implementing a linked list"
+assigned: 2019-01-24 9:00:00.00-8
+due: 2019-01-31 23:59:00.00-8
 ---
+
 
 # Goals for this lab
 
 By the time you have completed this lab, you should be able to
 
-* Effectively use g++ from the command line
-* Create and use a simple Makefile
-* Use basic gdb commands to debug a program
+* Explain the meaning of a "self-referential" data structure
+* Create, use and manage memory for simple linked lists
+* Implement functions that process linked lists
 
-Please note that this lab was updated on Jan 29 at 12:14 am. If you completed the lab before, note that the gdb exercise has changed. You must redo it.
 
-# Lab partners and mentor groups
-You have been assigned a partner who has reported the same level of confidence and experience in programming as yourself. Find your pair partner and mentor at this link:
+## Step by Step Instructions
 
-[Pair partners and mentor groups for CS24](/info/mentor_groups/)
+## Step 1: Choose initial roles, create a directory and get files
 
-# Step by Step Instructions
+Get together with your lab partner, and decide who will be the pilot first. Switch roles after awhile - before either of you gets tired, bored or distracted. If your regular partner is more than 5 minutes late, ask the TA to pair you with someone else for this week.
 
-## Step 1: Choose initial roles, create a directory and get the starter code for this lab
+Log onto the pilot's account. If the pilot's account is not working, allow the navigator to log in instead. You will (both) work in this account for the rest of the lab.
 
-Partner up (and remember to switch roles after awhile). If your regular partner is more than 5 minutes late, ask the TA to pair you with someone else for this week.
+## Step 1a: Create a git repo, add your partner as collaborator
 
-This lab's pilot should log in. You will (both) work in this account for the rest of the lab.
+* Create a repo for this lab on the pilot's github account following the process described in previous labs and also following the correct naming convention
 
-Create a ~/cs24/lab02 directory and make it your current directory:
+* The pilot should add the navigator as a collaborator on github. Navigator accept the invitation to gain joint ownership on the git repo
 
-```
-mkdir ~/cs24/lab02
-cd ~/cs24/lab02
-```
+## Step 1b: Set up directory for this lab (see detailed instructions in previous labs)
 
-Now navigate to your starter-code directory and do a git pull to get the latest version of the code
 
-```
-cd ~/cs24/cs24-w19-starter-code/
-git pull
-cd ~/cs24/lab02/
-```
-
-Now copy all of the files for this lab from the starter-code directory to your cs24/lab02 directory:
+* Clone your repo in your cs24 directory on CSIL.  
+* Navigate to your starter-code directory and do a git pull to get the latest version of the code.
+* Change into your {{page.num}} git directory
+* Now copy all of the files for this lab from the starter-code directory to your git directory:
 
 ```
-cp ~/cs24/cs24-w19-starter-code/lab02/* ~/cs24/lab02/
+cp ~/cs24/cs24-s18-starter-code/{{page.num}}/* ./
 ```
 
-## Step 2: Review compiling and linking with g++
-
-With a simple program like hello.cpp, we normally compile and link in one step, and then it is ready to run like so:
+Verify you got all the files and try to compile them as follows:
 
 ```
-g++ hello.cpp -o hello
-./hello
+-bash-4.2$ ls
+intlist.cpp  intlist.h  Makefile  README.md  testlist.cpp  testrest.cpp
+-bash-4.2$  make all
+g++ -c -g testlist.cpp
+g++ -c -g intlist.cpp
+g++ -g -o testlist testlist.o intlist.o
+g++ -c -g testrest.cpp
+g++ -g -o testrest testrest.o intlist.o
 ```
 
-But we can also compile the program without linking it. Type the following, and then use ls to find out what happened:
+We will discuss these files in Step 3. But first some practice.
+
+## Step 2: Practice using linked structures (Optional)
+
+You can go to the website, "www.cpp.sh", to practice the linked structures. (Or any other online cpp shell)
+Type or copy/paste the simple program shown below (in bold) at the code area in cpp.sh (replacing the original sample code):
+
+The structure, 'Node', you just created incorporates a way for an object of its type to point at another object of the same type - it is a self-referential structure. The idea is to point the next field of a Node at another Node, and in this way we can build lists of Nodes, with each one pointing to the next one. We also maintain a separate pointer that points at the first node in the list - often we call this pointer the "list" because it is the way we can access the list's elements.
+
+But before we do all that, let's just make a Node object, set it's fields, and let us display its contents:
 
 ```
--bash-4.3$ g++ -c hello.cpp
--bash-4.3$ ls hello.*
-hello.cpp  hello.o
+#include <iostream>
+
+struct Node {int info; Node *next;};
+
+int main()
+{
+  Node item;
+  item.info = 9;
+  item.next = 0;
+  std::cout << "This node holds a number: " << item.info << "\n";
+}
 ```
 
-Notice the new object file hello.o, which contains the machine language instructions in binary form. In a second step we would link this object file (just to standard libraries in this case) as follows:
+Now click a "Run" button below the code area.
+You shall see the output in the bottom.
 
 ```
-g++ hello.o -o hello
+This node holds a number: 9
 ```
 
-That step will finally produce the executable file "hello" - but only because we specified by the g++ option -o that the output file should be named hello. The program is run exactly like before by typing ./hello at the prompt.
+The Node named item stores a 9 as its information, and its next field (a.k.a. "link") does not point to anything. (The address 0 is reserved to mean "no address" in C++, and it is also the value of the symbolic constant NULL that is defined in cstdlib. Notice that ch calls it nil, but that just means the same thing too.) Usually a node with a null link is used to indicate the end of a linked list.
 
-## Step 3: Understanding separate compilation
-
-When it comes to large projects in C++, it's always useful to organize your project into separate parts. When some parts of your program change, then only these parts need to be recompiled.
-
-See the three files main.cpp, functions.cpp and functions.h in your starter code. Notice that both of the .cpp files include the .h file - this is a typical case. It won't be necessary to compile functions.h by itself, as it will become part of both object files produced when the .cpp files are compiled.
-
-## Your job for Step 3:
-
-Compile both of main.cpp and functions.cpp separately.
-Then link the object files (will be main.o and functions.o) together to produce an executable file named "hello2" - this executable's name is important, and part of the lab requirement.
-
-Run ./hello2 to verify success.
-
-Thought question: Why is it unnecessary to separately compile functions.h?
-
-## Other useful g++ options
-
-When first compiling your programs it's always good to use the "-Wall" and the "-g" options in order to force g++ to give you warnings about possible errors in the source code, and include extra debugging information in its output, respectively.
-
-The -g option is also necessary in order to use the gdb debugger later in the lab.
-
-If your program uses any of the extended C++ features of the C++ 2011 standard, then you must give the -std=c++11 option to g++ too.
-
-## Step 4: Using a Makefile
-
-Now imagine that you have a project with 20 different files, or even hundreds of files ...
-
-Wouldn't it be better if we could compile all our files just by typing one command? Wouldn't it be better and save us time if we have to compile only the files we have changed, and not all of them? This is why we use the Makefile and the make command.
-
-Now let's write a simple makefile to easily compile the files main.cpp, functions.cpp, and functions.h that we used on the previous section. Open a text editor and name the file "Makefile" (or "makefile"). You should always name your make files in this way.
-
-Don't just copy & paste this text! Be sure there is a tab character at the beginning of every command line (in this case, the three g++ commands and the rm command) - spaces will not work.
+Now let's use the structure to build an actual linked list of three integers. First we will declare a pointer named list to point at the first node in the list (or null if the list is empty). We initialize this pointer to a dynamically allocated first node, using the C++ keyword new (which returns a pointer). The remaining steps will create two more nodes, store values in each node, and properly link them all together as a list. Type or copy/paste the program in bold:
 
 ```
-hello: main.o functions.o
-  g++ main.o functions.o -o hello
+#include <iostream>
 
-main.o: main.cpp functions.h
-  g++ main.cpp -c
+struct Node {int info; Node *next;};
 
-functions.o: functions.cpp functions.h
-  g++ functions.cpp -c
-
-clean:
-  rm hello main.o functions.o
-
-```
-Save the Makefile. Then make a minor change to one of the source code files (main.cpp, functions.cpp or functions.h). And finally type "make" in your console. Fix Makefile if it doesn't compile the changed parts and reproduce the executable file. If it does, then find out what happens if you type "make" again. ;-)
-
-By default, make will execute whatever is necessary to produce the first target which is hello (the executable) in this case. Alternatively, you can specify the target you want to make by typing it as a command line argument, as in "make hello" to execute the default another way.
-
-Suppose that now you want to remove the objects and executable file. What should you type in your console? Be prepared to answer that question if the your mentor asks you.
-
-## Step 5: Using gdb (Gnu debugger)
-
-Maybe time to switch partner roles?
-
-Inevitably sometime you will need to debug your code. gdb is a very powerful tool. Here we learn just the basics.
-
-### GDB Commands Summary
-The following is a list of the most useful commands inside the gdb - [also available at this link](http://www.cs.uregina.ca/Links/class-info/330/CompileDebug/170_gdb.html).
-gdb provides online documentation. Just typing help, you will obtain a list of topics.
-
-**file**
-"file executable" specifies which program you want to debug.
-
-**run**
-"run" starts the program running under gdb. The program is the one that you have previously selected with the file command, or on the unix command line when you started gdb. You can give command line arguments to your program on the gdb command line. You can do this the same way you would on the unix command line, except that you are saying run instead of the program name. For example,
-
-run 5 20 40 60
-
-You can even do input/output redirection: run > outfile.txt.
-
-**list**
-"list linenumber" prints out some lines from the source code around linenumber. If you give it the argument function it will print out lines from the beginning of that function.
-
-Just list without any arguments will print out the lines just after the lines that you printed out with the previous list command.
-
-**break**
-"break" sets a breakpoint in your program.
-
-A `breakpoint` is a spot in your program where you would like to temporarily stop execution in order to check the values of variables, or to try to find out where the program is crashing, etc.
-
-"break function" sets the breakpoint at the beginning of function. If your code is in multiple files, you might need to specify filename:function.
-
-"break linenumber" or "break filename:linenumber" sets the breakpoint to the given line number in the source file. Execution will stop before that line has been executed.
-
-**delete**
-"delete" deletes all breakpoints that you have set. 
-"delete number" deletes breakpoint numbered number. You can find out what number each breakpoint is by doing info breakpoints. (The command info can also be used to find out a lot of other stuff. Do help info for more information.)
-
-**clear**
-"clear function" deletes the breakpoint set at that function. Similarly for linenumber, filename:function, and filename:linenumber.
-
-**step**
-"step" goes ahead and execute the current source line, and then stop execution again before the next source line.
-
-**next**
-"next" continues until the next source line in the current function (actually, the current innermost stack frame, to be precise). This is similar to step, except that if the line about to be executed is a function call, then that function call will be completely executed before execution stops again, whereas with step execution will stop at the first line of the function that is called.
-
-**until**
-"until" is like next, except that if you are at the end of a loop, "until" will continue execution until the loop is exited, whereas "next" will just take you back up to the beginning of the loop. This is convenient if you want to see what happens after the loop, but don't want to step through every iteration.
-
-**print**
-"print expression" prints out the value of the expression, which could be just a variable name. To print out the first 25 (for example) values in an array called list, you would do 
-print list[0]@25
- 
-
-**quit**
-"quit" is used to exit the gdb debugger.
-
-
-Look at buggyGPA.cpp to know its major parts.
-
-(Emacs Users Hint: If you are using emacs you can see line numbers on the editor by typing M-x linum-mode. This will make your life easier. If you prefer running gdb on e-macs maybe you should try M-x gdb-many-windows in order to split your screen and be able to see variable values, gdb and e-macs all together. You gain control back to emacs by typing: C-x 0)
-
-This program is supposed to a list of course names and letter grades in order and compute a grade point average out of 4.0 based on the following standard mapping:
-
-| Letter  | Point value|
-| --------| -----------|
-| A+      |   4.0  |
-| A       |   4.0  |
-| A-      |   3.7  |
-| B+      |   3.3  |
-| B       |   3.0  |
-| B-      |   2.7  |
-| C+      |   2.3  |
-| C       |   2.0  |
-| C-      |   1.7  |
-| D+      |   1.3  |
-| D       |   1.0  |
-| <D      |   0    |
-
-
-
-So a non-buggy version of the program with executable name "gpa" would execute like this, where 16, :
-
-```
-$ ./gpa CS16 A CS24 A+ CS32 A
-CS16   A
-CS24   A+
-CS32   A
-GPA: 4.000
+int main()
+{
+  Node* list = new Node;
+  list->info = 10;
+  list->next = new Node;
+  list->next->info = 20;
+  list->next->next = 0;
+  
+  Node* temp = list;
+  list = new Node;
+  list->info = 5;
+  list->next = temp;
+  
+  for (Node* n = list; n != 0; n = n->next) {
+    std::cout << "\nThis node is at address: " << n << std::endl;
+    std::cout << "It holds a number: " << n->info << std::endl;
+    std::cout << "Moving to the next node whose address is " << n->next << "..." << std::endl;
+  }
+}
 ```
 
-If an odd number of arguments are passed to the program it should appropriately print a usage message to standard error, as follows:
+Now click a "Run" button below the code area.
+You shall see the output in the bottom.
 
 ```
-$ ./gpa 16 
-Usage: ./gpa course letterGrade 
+This node is at address: 0x16359e0
+It holds a number: 5
+Moving to the next node whose address is 0x16359a0...
+
+This node is at address: 0x16359a0
+It holds a number: 10
+Moving to the next node whose address is 0x16359c0...
+
+This node is at address: 0x16359c0
+It holds a number: 20
+Moving to the next node whose address is 0...
 ```
 
+The for loop continues as long as n points at a node. At the end of each loop iteration, n is changed to point at the next node in the list. Study this loop, and be sure to understand it - discuss it with your partner to make sure you both understand it.
 
-But this code has errors. Your job will be to find all the errors using gdb. No need to fix it now, just find it. That's the purpose of gdb - it helps you find errors in your code. 
-
-Compile the code, and remember to compile with the -g option. Use this command:
-
-```
-g++ -g -o buggy buggyGPA.cpp
-```
-
-Then run it. Here is an example run:
+As one more illustration, let's use a while loop to count the nodes in a list like this one. Make sure you understand the following loop too, in which the while loop condition is just the node pointer itself -- it becomes 0 at the end. ;-)
 
 ```
-$ ./buggy CS16 A CS24 A+ CS32 A
-CS16   A
-CS24   A+
-CS32   A
-GPA: 2.667
+#include <iostream>
+
+struct Node {int info; Node *next;};
+
+int main()
+{
+  Node* list = new Node;
+  list->info = 10;
+  list->next = new Node;
+  list->next->info = 20;
+  list->next->next = 0;
+  
+  Node* temp = list;
+  list = new Node;
+  list->info = 5;
+  list->next = temp;
+  
+  Node* n = list;
+  while (n) {
+    std::cout << "\nThis node is at address: " << n << std::endl;
+    std::cout << "It holds a number: " << n->info << std::endl;
+    std::cout << "Moving to the next node whose address is " << n->next << "..." << std::endl;
+    
+    n = n->next;
+  }
+}
 ```
 
-Hmmm... Well it seems that our program doesn't calculate the correct GPA. Let's try to debug it with gdb to see how the basic gdb commands work. Begin by starting gdb with buggy as its command line argument:
+One big issue in the above program is memory leak.
+
+Since we dynamically allocated the memory for three nodes, we should free that memory before exiting the program and proceeding to Step 3. Also, according to convention, we set the list pointer to null - it is now an empty list:
 
 ```
-$ gdb ./buggy
-GNU gdb (GDB) Fedora 7.12.1-48.fc25
-Copyright (C) 2017 Free Software Foundation, Inc.
-License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
-This is free software: you are free to change and redistribute it.
-There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
-and "show warranty" for details.
-This GDB was configured as "x86_64-redhat-linux-gnu".
-Type "show configuration" for configuration details.
-For bug reporting instructions, please see:
-<http://www.gnu.org/software/gdb/bugs/>.
-Find the GDB manual and other documentation resources online at:
-<http://www.gnu.org/software/gdb/documentation/>.
-For help, type "help".
-Type "apropos word" to search for commands related to "word"...
-Reading symbols from ./buggy...done.
+#include <iostream>
 
-(gdb) break 23
-Type "r" for "run", followed by the command line arguments CS16 A CS24 A+ 
+struct Node {int info; Node *next;};
 
-(gdb)r CS16 A CS24 A+ CS32 A
-Starting program: /cs/faculty/dimirza/git/cs24-s18-starter-code/lab02/buggy CS16 A CS24 A+ CS32 A
-This way the program will run until line 23. Normally, you might have put 
-a cout statement right before this line to examine the values of the arrays 
-and any other local variables. With gdb we can do this at the gdb command 
-line without having to edit and recompile our program
-
-Let's print the element 0 of courseNames using the "p" (print) statement
-
-(gdb) p courseNames[0]
-$4 = "CS16"
-
-That seems right. Now let's try to print the first five elements of courseNames
-
-(gdb) p courseNames[0]@5
-$1 = {"CS16", "", "CS24", "", "CS32"}
-
-This is definitely weird, "CS24" is at index 2, while it should have been
-at index 1, CS32 is at the wrong spot as well. 
-Go ahead and print the values of all the local variables in your code using 
-info locals
-
-(gdb) info locals
-courseNames = {"CS16", "", "CS24", "", "CS32"}
-courseGrades = {0, 0, 1.3852388523421298e-309, 5.4322263344105125e-312, 0}
-courseLetterGrades = {"A", "", "A+", "", "A"}
-numCourses = 3
-result = 2.0750045670802343e-317
-
+int main()
+{
+  Node* list = new Node;
+  list->info = 10;
+  list->next = new Node;
+  list->next->info = 20;
+  list->next->next = 0;
+  
+  delete list->next; // Why we free list->next firstly?
+  delete list;
+  list = 0; // Can we put this line before delete line?
+}
 ```
 
-You will probably see a different set of values for courseGrades and result 
-because these are uninitialzied. But the other variables should have the
-same values as shown above. We can immediately spot that something went 
-wrong prior to line 23 by looking at the content of courseNames and
-courseLetterGrades. The program should have resulted in courseNames being
-{"CS16", "CS24", "CS32", "", ""} and courseLetterGrades being
-{"A", "A+", "A",  "", ""}. Notice how much easier it is to examine the values
-of your variables at run time with gdb, without having to put additional 
-print statements.
+## Step 3: Learn how to encapsulate list nodes
 
-Let's continue for now. Type "l" for list to see the code you are about to execute.
+Now that you have a feel for list nodes, you should know that such structures are not usually manipulated directly by application programs - not in C++ anyway (although it is common in C programming). Instead applications normally use objects of a List class, and the class itself is the only part of the program that accesses list nodes.
 
-```
-(gdb) l
-18	    courseNames[i-1] = string(argv[i]);
-19	    courseLetterGrades[i-1] = string(argv[i+1]);
-20	    cout<< courseNames[i-1] << "   "<< courseLetterGrades[i-1]<< endl;
-21	  }
-22	
-23	  assignCourseGrade(numCourses, courseLetterGrades, courseGrades );
-24	  
-25	  cout.setf(ios::fixed);
-26	  cout.setf(ios::showpoint);
-27	  cout.precision(3);
+In the rest of this lab, you will help build such a list class. The class definition is stored in intlist.h - please study it to know its parts:
 
-We had set the breakpoint at line 23 which is a function call. 
-You can step into the function assignCourseGrade using the "s" (step) command
-(gdb) s
-assignCourseGrade (numCourses=2, courseLetterGrades=0x7fffffffde60, 
-    courseGrades=0x7fffffffdf00) at buggyGPA.cpp:37
-37	    for(int i =0 ; i < numCourses; i++){
+The public declarations show what a client program can do with an IntList object. Notice, however, that the list node structure definition is in the private area. Clients can't directly use or even refer to such nodes, but all that clients should care about are the values stored in these nodes anyway! Also notice that every list object will have one node pointer, to point at the first node in the list or at 0 if the list is empty.
+Now look at intlist.cpp. The functions that you need to implement are marked in that file. Some of the methods of the class are implemented at the bottom of the file - do not change what is done.
+
+An application file would create IntList objects and use them to solve problems. For this lab, we have two application files, both of which are testing programs - testlist.cpp and testrest.cpp. First look testlist.cpp. Two IntList objects are created; then numbers read from the command line are appended to one of the lists; and finally the methods are tested for each list.
+
+You can use the provided Makefile to help you complile the program. 
+
+## Step 4: Implement linked list functions
+
+First: switch roles between pilot and navigator if you did not already do that. Always stay logged into the original pilot's account.
+
+You should be able to run the program now (assuming you compiled it in Step 3) - it requires you to enter a starter list of integers on the command line:
 
 ```
-
-gdb is showing you the values of all the parameters passed to the 
-assignCourseGrade function! Print the first 5 elements of courseGrades
-
-```
-(gdb) p courseGrades[0]@5
-$2 = {0, 0, 1.3852388523421298e-309, 5.4322263344105125e-312, 0}
-
-This is the array the function will be modifying. 
-Use "n" for next to just execute the next line
-
-(gdb) n
-38	      if(courseLetterGrades[i]=="A" || courseLetterGrades[i]=="A+"){
-
+-bash-4.2$ ./testlist
+error: need at least one int arg on command line
+usage: ./testlist int [int ...]
 ```
 
-You can run the same gdb command as before by pressing enter. 
-In this case if you press enter you gdb will execute the next command.
+Next time we'll run it properly. The contains method is checked for three values that ought to be in the list, plus one value that should not (the sum). Here is a sample run with initial values of 5, 7, 9 and 11:
 
 ```
-(gdb) 
-39	        courseGrades[i] = 4.0;
+./testlist 5 7 9 11
+List 1:
+   [5 7 9 11]
+   count: 4
+   sum: 0
+   contains 5 ? no
+   contains 7 ? no
+   contains 11 ? no
+   contains 0 ? no
+   max: 0
+   average: 0.000
+   List after insertFirst(sum):
+   [5 7 9 11]
+Empty list 2:
+   []
+   count: 0
+   sum: 0
+   contains 1 ? no
+   max: 0
+   average: 0.000
+   List 2 after insertFirst(3), then insertFirst(1):
+   []
+```
+See that append, print and count all work. But the others need to be fixed. 
+
+Use an editor (e.g., emacs or vim) to make the following changes to intlist.cpp - do not change any of the other files.
+
+* Fix the comment at the top to show your name(s) and the date.
+* Implement the sum method. See the count method for guidance.
+* Save, and then test your sum implementation - compile and execute testlist again. Verify sum is working before going on.
+* Push your code to github using the "git add .", "git commit" and "git push " commands
+* Then implement the contains method, save again and test again.
+* Continue with the other three functions in the same way: implement and test one at time. Don't implement the copy constructor, destructor and assignment operator yet.
+
+Push your code to github often. 
+
+Here are correct results for the same sample data as above:
 
 ```
-
-So, the next line gdb is going to execute is line 40. 
-Enter once more to execute this line and you should be back to the beginning of the for loop on line 38
-
-```
-(gdb) 
-37	    for(int i =0 ; i < numCourses; i++){
-```
-
-Now print the 5 elements of courseGrades using the commands we learned before. 
-Is it what you expected?
-
-```
-(gdb) p courseGrades[0]@5
-$3 = {4, 0, 1.3852388523421298e-309, 5.4322263344105125e-312, 0}
-```
-
-Element at index 0 has been set to 4 which is what we expected.
-Now let's run the code until we finish executing the for loop.
-You can do this with until
-
-```
-gdb) until
-62	}
-```
-gdb always shows you the next line that will be executed. 
-In this case it is the brace that is at the end of the function. 
-We are still in the function, so you can examine the value of courseGrades again
-
-```
-(gdb)p courseGrades[0]@5
-$4 = {4, 0, 4, 5.4322263344105125e-312, 0}
+List 1:
+   [5 7 9 11]
+   count: 4
+   sum: 32
+   contains 5 ? yes
+   contains 7 ? yes
+   contains 11 ? yes
+   contains 32 ? no
+   max: 11
+   average: 8.000
+   List after insertFirst(sum):
+   [32 5 7 9 11]
+Empty list 2:
+   []
+   count: 0
+   sum: 0
+   contains 1 ? no
+   max: 0
+   average: 0.000
+   List 2 after insertFirst(3), then insertFirst(1):
+   [1 3]
 ```
 
-Notice element at index 1 has been set to 0. If courseLetterGrades was properly populated, courseGrades would have had 4.0 at index 1. 
+Ask yourself: What are the value semantics of an IntList object? With just the automatic copy constructor and assignment operator, won't copies be shallow? 
 
-You can now clearly see the consequence  of not having courseGrades properly populated.
+You will fix this problem by overloading the copy constructor and assignment operator. You should also implement the destructor. However before you begin, examine testrest.cpp. This file tests the functions your are about to implement.
 
-
-More about breakpoints: Put a breakpoint on line 28. Now you have two breakpoints set - this new one is number 2. You can disable it by entering "disable 2" (you could also use dis 2). 
-
-And you can enter "enable 2" (or "ena 2") to enable the breakpoint again, and "delete 2" (or "d 2") to delete the breakpoint.
-
-To run your code until the next breakpoint is reached type (c) for continue.
-
-Other stuff: Enter "help" at the gdb prompt to find out about more commands. One useful one, for example, is "list" - try it.
-
-Type q (for quit) and then 'y' to quit gdb
-
-Now run the program with just one argument as follows:
+Run the test program with argument 1 (to test your copy constructor) before implementing the above functions.
 
 ```
-$ ./buggy CS16
-terminate called after throwing an instance of 'std::logic_error'
-  what():  basic_string::_M_construct null not valid
-Aborted (core dumped)
+$ ./testrest 1
+Segmentation fault (core dumped)
 ```
+Now run the program with the same argument in gdb and try to figure out exactly why it crashed.
 
-Your program may or may not crash but if you see the same error message as I have
-then it has clearly crashed! If you are not able to reproduce the crash don't worry, just read on.
-
-Notice that when your program crashes, the error message C++ throws at you doesn't give any clues about which line of code caused it.
-
-Now let's try running the program in gdb
+* Implement the copy constructor in intlist.cpp. Compile with make and run <code>$ ./testrest 1</code>. Repeat this process until the test passes. However its not enough to just pass the test. This because when you are writing programs that work with dyanamic data (on the heap), your program could have memory leaks that are not captured by unit tests. To check for leaks you should run your program in valgrind as follows:
 
 ```
-gdb buggy
-GNU gdb (GDB) Fedora 7.12.1-48.fc25
-Copyright (C) 2017 Free Software Foundation, Inc.
-License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
-This is free software: you are free to change and redistribute it.
-There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
-and "show warranty" for details.
-This GDB was configured as "x86_64-redhat-linux-gnu".
-Type "show configuration" for configuration details.
-For bug reporting instructions, please see:
-<http://www.gnu.org/software/gdb/bugs/>.
-Find the GDB manual and other documentation resources online at:
-<http://www.gnu.org/software/gdb/documentation/>.
-For help, type "help".
-Type "apropos word" to search for commands related to "word"...
-Reading symbols from buggy...done.
-(gdb) r CS16
-Starting program: /cs/faculty/dimirza/git/cs24-w18-lab-starter-code/lab02/buggy CS16
-Missing separate debuginfos, use: dnf debuginfo-install glibc-2.24-10.fc25.x86_64
-terminate called after throwing an instance of 'std::logic_error'
-  what():  basic_string::_M_construct null not valid
-
-Program received signal SIGABRT, Aborted.
-0x00007ffff719e8df in raise () from /lib64/libc.so.6
-
+$ valgrind --leak-check=full ./testrest 1
+==5414== Memcheck, a memory error detector
+==5414== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==5414== Using Valgrind-3.12.0 and LibVEX; rerun with -h for copyright info
+==5414== Command: ./testrest 1
+==5414== 
+PASSED copy constructor tests
+==5414== 
+==5414== HEAP SUMMARY:
+==5414==     in use at exit: 0 bytes in 0 blocks
+==5414==   total heap usage: 17 allocs, 17 frees, 73,968 bytes allocated
+==5414== 
+==5414== All heap blocks were freed -- no leaks are possible
+==5414== 
+==5414== For counts of detected and suppressed errors, rerun with: -v
+==5414== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
 ```
 
-Looks like an exception was raised somewhere in the C++ library. The std library
-is always correct. We need to find which line of our code caused this 
-behavior.
+The error summary should show 0 errors as shown above. If you have memory leaks, valgrind will let you know.
 
-Use the bt (backtrace) command to trace the sequence of function calls that
-resulted in this state
 
-```
-(gdb) bt
-#0  0x00007ffff719e8df in raise () from /lib64/libc.so.6
-#1  0x00007ffff71a04da in abort () from /lib64/libc.so.6
-#2  0x00007ffff7ae04fd in __gnu_cxx::__verbose_terminate_handler() ()
-   from /lib64/libstdc++.so.6
-#3  0x00007ffff7ade2b6 in ?? () from /lib64/libstdc++.so.6
-#4  0x00007ffff7ade301 in std::terminate() () from /lib64/libstdc++.so.6
-#5  0x00007ffff7ade519 in __cxa_throw () from /lib64/libstdc++.so.6
-#6  0x00007ffff7b080af in std::__throw_logic_error(char const*) ()
-   from /lib64/libstdc++.so.6
-#7  0x00007ffff7b74f84 in void std::__cxx11::basic_string<char, std::char_traits<char>,
-std::allocator<char> >::_M_construct<char const*>(char const*, char const*, 
-std::forward_iterator_tag) () from /lib64/libstdc++.so.6
-#8  0x00007ffff7b7513c in std::__cxx11::basic_string<char, std::char_traits<char>,
-std::allocator<char> >::basic_string(char const*, std::allocator<char> const&) () 
-from /lib64/libstdc++.so.6
-#9  0x0000000000400e99 in main (argc=2, argv=0x7fffffffe148) at buggyGPA.cpp:19
-(gdb)
-```
-
-Looks like the culprit is line 19 of buggyGPA.cpp. That's the line of code
-that resulted in the chain of events leading up to the crash.
-Use the list command to examine the code around line 19 of buggyGPA.cpp
+* Implement the destructor, compile and run <code>$ ./testrest 2</code>. 
+You should see the following message:
 
 ```
-(gdb) l buggyGPA.cpp:19
-
-15	  int numCourses = int(argc/2);
-16	
-17	  for (int i = 1; i< argc; i=i+2 ){
-18	    courseNames[i-1] = string(argv[i]);
-19	    courseLetterGrades[i-1] = string(argv[i+1]); // here is the line that caused the crash
-20	    cout<<courseNames[i-1] << "   "<<courseLetterGrades[i-1]<<endl;
-21	  }
+$ ./testrest 2
+Testing destructor, run in valgrind to check for leaks
 ```
+Now run it in valgrind to make sure you don't have any memory leaks
 
-Line 19 is: courseLetterGrades[i-1] = string(argv[i+1]);
-Without gdb identifying that this exact line of code caused the program to crash would have 
-been reealllly hard!
+* Finally implement the overloaded assignment operator in intlist.cpp. To test it run <code>$ ./testrest 3</code>. If it doesn't crash, run it in valgrind to check for memory leaks
 
-What's more, with gdb you can go back in time (yes its also a time machine!) 9 function calls ago
-and retrieve the values of your local variables right before line 19 was executed.
+Step 5: Submit intlist.cpp. (Only intlist.cpp)
 
-Use the up command to go back 9 calls to the moment when line 19 was about to be executed.
+Log into your account on https://www.gradescope.com/ and navigate to our course site: CS24 Spring 2018. Select this assignment. Then click on the "Submit" button on the bottom right corner to make a submission. You will be given the option of uploading files from your local machine or submitting the code that is in a github repo. Select the second option and select your github repo for this assignment. You should receive 100/100 for a completely correct program.
 
-```
-(gdb) up 9
-#9  0x0000000000400e99 in main (argc=2, argv=0x7fffffffe148) at buggyGPA.cpp:19
-19	    courseLetterGrades[i-1] = string(argv[i+1]);
+If you are working with a partner, be sure that both partners' names are in a comment at the top of the source code file.
 
-You can now examine the value of the local variable i
-
-(gdb) p i
-$1 = 1
-```
-
-Look at line 19 again. If i is 1 then i+1 is 2. This means argv[i+1] is an out of
-bound access (argv only has two elements). You can actually print the value of
-argv[i+1] 
-
-```
-(gdb) p argv[i+1]
-$2 = 0x0
-```
-
-In my case it was null - an invalid parameter to the constructor of string class.
-This caused my program to crash!
+Do beware that all parts must be working to earn any points at all from the Gradescope system.
 
 
+## Evaluation and Grading
 
-Ok... Now you have a new tool to find bugs in your programs. Debug buggyGPA.cpp so that it can handle upto 5 (or more) input courses. Everytime you change the file, you should recompile it and then run.
+Each student must accomplish the following to earn full credit [50 total points] for this lab:
 
+* [100 points] intlist.cpp is saved, it has your name(s) in a comment at the top, it compiles and executes properly, and has been submitted with a score of 100/100 to the Gradescope system.
+* [50 points] Creation of github repo, writing readable code and pushing your code frequently to github
 
-## Step 6: Show off your work and get credit for this lab
-
-Get your mentor's attention to inspect your work.
-Before you submit, rename buggyGPA.cpp to gpa.cpp as it is now bug free!
-
-## Step 7: Submit your code on gradescope
-
-Log into your account on [https://www.gradescope.com/](https://www.gradescope.com/) and navigate to our course site: CS24 Spring 2018. Select this assignment. Then click on the "Submit" button on the bottom right corner to make a submission. You will be given the option of  uploading files from your local machine or submitting the code that is in a github repo. Select the second option and select your github repo for this assignment. You should receive 50/50 for a completely correct program.
 
 

@@ -1,7 +1,7 @@
 ---
 num: "lect08"
-desc: "Recursion + Mid quarter evaluations"
-ready: true
+desc: "Binary Search Trees"
+ready: false
 pdfurl: /lectures/CS24_Lecture8.pdf
 annotatedpdfurl: /lectures/CS24_Lecture8_ann.pdf
 annotatedready: false
@@ -13,6 +13,8 @@ lecture_date: 2019-02-06
 [https://github.com/ucsb-cs24-s18/cs24-s18-lectures/tree/master/lec-08](https://github.com/ucsb-cs24-s18/cs24-s18-lectures/tree/master/lec-08)
 
 # Topics
-* Recursion revisited
-* Recursive deconstructors
-
+* Binary trees
+* Binary search trees (BST) - implementation
+* BST operations 
+* Traversing a BST inorder, preorder, post order
+* Midquarter evaluations

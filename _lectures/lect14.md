@@ -1,7 +1,7 @@
 ---
 num: "lect14"
 desc: "Priority Queues (Heaps)"
-ready: true
+ready: false
 pdfurl: /lectures/CS24_Lecture14.pdf
 annotatedpdfurl: /lectures/CS24_Lecture14_ann.pdf
 annotatedready: false

@@ -1,9 +1,9 @@
 ---
-num: pa02
+num: pa02-checkpoint
 ready: false
 desc: "Linked-list implementation of a card game"
-assigned: 2019-01-31 09:00:00.00-8
-due: 2019-02-14 23:59:00.00-8
+assigned: 2019-01-25 09:00:00.00-8
+due: 2019-02-01 23:59:00.00-8
 ---
 
 <div markdown="1">
@@ -13,7 +13,7 @@ due: 2019-02-14 23:59:00.00-8
 * Create a github repo following the correct naming convention.
 * If you have a partner, add you partner as a collaborator to the repo. Partner should accept the invitations to complete this process
 * Get the starter code for this lab by doing a git pull in your starter-code repo and copying the files from the pa02 folder in this git repo:
-[https://github.com/ucsb-cs24-s18/cs24-s18-starter-code.git](https://github.com/ucsb-cs24-w18/cs24-s18-lab-starter-code) 
+[https://github.com/ucsb-cs24-w19-mirza/cs24-w19-starter-code.git](https://github.com/ucsb-cs24-w19-mirza/cs24-w19-starter-code) 
 
 # Goal of this assignment
 

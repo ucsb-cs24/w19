@@ -1,7 +1,7 @@
 ---
 layout: lab
 num: lab01
-ready: false
+ready: true
 desc: "Define implement and apply a C++ class  "
 assigned: 2019-01-10 9:00:00.00-8
 due: 2019-01-17 23:59:00.00-8
@@ -16,6 +16,9 @@ By the time you have completed this lab, you should be able to
 * Test a simple C++ class implementation
 
 We assume you already know everything that was covered in Lab00, and we will not repeat instructions given there for basic operations. This assignment must be completed individually.
+
+# This lab must be done solo
+Please note that you may not collaborate on this lab
 
 # Step by Step Instructions
 
@@ -38,18 +41,18 @@ We assume you already know everything that was covered in Lab00, and we will not
 * Clone the starter code repo from our class organization to your cs24 directory.
 
 ```
-	git clone git@github.com:ucsb-cs24-s18/cs24-s18-starter-code.git
+	git clone git@github.com:ucsb-cs24-w19-mirza/cs24-w19-starter-code.git
 ```
 
-Note that this repo contains the starter code for all labs and programming assignments (although only the code for lab01 is up to date). So, you don't have to repeat the above step in subsequent labs.
+Note that this repo will be updated to contain the starter code for all labs and programming assignments (although right now it only contains the code for lab01). In subsequenet labs you don't have to repeat this step. Instead you just have to type the command `git pull` to get the latest code. 
 
 
 ## Step 1b: Create a new repo and clone it on your local machine
 
-* Create a repo for this lab just like you did in lab00: To do this, open a browser and navigate to [https://github.com](https://github.com). Log into your github account. From the drop down menu on the left, select our class organization: ucsb-cs24-s18 and proceed to create a new repo using the correct naming convention. You may refer to the instructions in lab00. Also you must set the visibity of your repo to be 'PRIVATE' when creating it. We will not repeat these instructions in subsequent labs.
+* Create a repo for this lab just like you did in lab00: To do this, open a browser and navigate to [https://github.com](https://github.com). Log into your github account. From the drop down menu on the left, select our class organization: ucsb-cs24-w19-mirza and proceed to create a new repo using the correct naming convention. You may refer to the instructions in lab00. Also you must set the visibity of your repo to be 'PRIVATE' when creating it. We will not repeat these instructions in subsequent labs.
 
 * Clone the repo on your local machine: Navigate to your repo on github. If your repo is named lab00_jgaucho, then you have to go to to the link:
-[https://github.com/ucsb-cs24-s18/lab00_jgaucho](https://github.com/ucsb-cs24-s18/lab00_jgaucho). Click on the green "clone or download" button. Then click on the address of your repo as shown in the figure below:
+https://github.com/ucsb-cs24-w19-mirza/lab00_jgaucho. Click on the green "clone or download" button. Then click on the address of your repo as shown in the figure below:
 
 ![submit](/lab/lab01/clone-repo.png){:height="500px"}
 
@@ -57,7 +60,7 @@ Note that this repo contains the starter code for all labs and programming assig
 
 ```
 	cd ~/cs24
-	git clone git@github.com:ucsb-cs24-s18/lab00_jgaucho.git
+	git clone git@github.com:ucsb-cs24-w19-mirza/lab00_jgaucho.git
 ```
 
 * The above command will create a new directory with the same name as your git repo. Change into that directory. For our example repo we need to type
@@ -73,7 +76,7 @@ You will write all the code for this assignment in this directory
 Copy the starter code to your git repo directory
 
 ```
-	cp ../cs24-s18-starter-code/lab01/* ./
+	cp ../cs24-w19-starter-code/lab01/* ./
 ```
 You should see two files in your current directory: rugfit1.cpp and rugfit2.cpp
 
@@ -174,26 +177,27 @@ Here are the steps necessary to achieve such an object-oriented solution:
 
 ## Step 5: Complete rugfit2.cpp
 
-First you should study the parts of rugfit2.cpp that are complete. It consists of three main parts - and in later labs you will normally store such parts in separate files: (1) the abstraction - class Rectangle is defined; (2) the implementation - the methods of class Rectangle are defined (a.k.a. implemented); and (3) the application - the main function is defined. Your job involves additions to each of these parts.
+Read all the code and comments in rugfit2.cpp that are complete. It consists of three main parts - and in later labs you will normally store such parts in separate files: (1) the abstraction - class Rectangle is defined; (2) the implementation - the methods of class Rectangle are defined (a.k.a. implemented); and (3) the application - the main function is defined. Your job involves additions to each of these parts.
 
-Now it is time to edit the program with emacs or another editor of your choice. Lab00 had a link to some emacs help if you need it.
+Now it is time to edit the program with vim or another editor of your choice. 
 
 ```
-emacs rugfit2.cpp
+vim rugfit2.cpp
 ```
 
-* Make the following edits, then save, and quit the editor. Maybe you want to switch roles between pilot and navigator about now (but stay logged into the original pilot's account).
+* Make the following edits, then save, and quit the editor. 
 
 * Fix the comment at the top to show your names and the date you are doing this lab. By the way, this instruction always applies whether or not we remind you to do it in future labs or programming projects - always type your name(s) and the date at the top of all your programs.
 
-* In the definition of class Rectangle: declare a function named area that will take no arguments and will return a double value. Make the function const - meaning it promises not to change the object on which it is called - just like the getWidth and getLength functions that are already declared in the skeleton.
+* Write the definition of the class Rectangle: 
+- declare a parameterized constructor that takes two parameters: width and length and correctly initializes the private member variables
+- declare two accessor functions: one to return the width and the other to return the length. Your declaration should make sure that the accessor functions are not be able to modify the member variables. 
+- declare two mutator functions: one to set the width and another to set the length
+- declare a function named area that will take no arguments and will return a double value. Make the function const - meaning it promises not to change the object on which it is called - just like the getWidth and getLength functions that are already declared in the skeleton.
 
-* Scroll down past the end of the class definition and past the existing definitions of the constructor and four standard get and set methods, and then define the area method you declared above. Look at the other method definitions as examples for how to do it - notice they use the scope resolution operator to identify their connection to a particular class, as in Rectangle::setLength which identifies it as pertaining to class Rectangle. Return the value of length times width.
+* Scroll down past the end of the class definition and define the constructor and four standard get and set methods, and then define the area method. Use the scope resolution operator to identify their connection to a particular class.
 
-* In the main function: prompt the user for the width and length of the rug, read those two values from the user, and then reset the width and length of the Rectangle object named rug with the user's dimensions (using the rug's setWidth and setLength methods, of course). As a reminder, you use the object's name, the dot operator, and the name of the method to do such things. For example, if we wanted to find the value of the floor's width, we could do so by using the getWidth method as follows:
-floor.getWidth()
-
-* Also in main: change the two assignment statements for floorArea and rugArea to use the area method for each of the floor and rug objects.
+* In the main function: prompt the user for the width and length of the rug, read those two values from the user, and then reset the width and length of the Rectangle object named rug with the user's dimensions (using the rug's mutator methods, of course). As a reminder, you use the object's name, the dot operator, and the name of the method to do such things.
 
 ## Step 6: Compile and run the program to test it
 

@@ -18,12 +18,16 @@ annotatedready: false
 	- why study data structures, C++ and git?
 	- what are the goals of this class?
 * Intro to Object Oriented Programming
+* Intro to OOP
+* Implementing classes: class vs instance, syntax for classes, scope, methods, instance variables
+* Classes: structs but with methods
+* Accessors and modifiers
+* ADT (Abstract Data Type) ~ class (w/ info hiding) for use by other programmers
 
 ## Github intro
 * What is github? How and why we plan to use it in this class
 * What is a git repo?
 * Creating a github repo and using github's web interface to store your first program
-
 
 * Gentle intro to github: what is a repo, creating a repo,  cloning a repo to a local machine, syncing repos with git add, commit and push
 

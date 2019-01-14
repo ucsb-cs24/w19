@@ -4,7 +4,7 @@ desc: " Operator overloading"
 ready: false
 pdfurl: /lectures/CS24_Lecture4.pdf
 annotatedpdfurl: /lectures/CS24_Lecture4_ann.pdf
-annotatedready: false
+annotatedready: true
 lecture_date: 2019-01-16
 ---
 
@@ -14,15 +14,7 @@ lecture_date: 2019-01-16
 
 # Topics
 
-## Makefiles
-* We will split our implementation of the die Game from the previous class into three files  - header file (contains only the class definition), source file (contains the implementation of the class methods - no main), test file - uses the ADT. (More practice on this in lab02)
 
-
-## The big four
-* Constructor
-* De-constructor
-* Copy-constructor
-* Copy-assignment
 
 ## Operator overloading - Pages 63 - 80 in the book
 
@@ -40,13 +32,8 @@ We will specifically discuss:
 2. Overloading binary arithmetic operators e.g. +
 3. Overloading output and input operators e.g. >> and <<
 
-If time permits...
 
-## Review of pointers and dynamic memory allocation
-* Review of pointers, arrays
-* Passing parameters by value and address
-* Passing arrays to functions
-* Dynamic memory allocation and dynamic arrays
+
 
 
 

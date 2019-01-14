@@ -14,6 +14,11 @@ lecture_date: 2019-01-16
 
 # Topics
 
+## Review of pointers and dynamic memory allocation
+* Review of pointers, arrays
+* Passing parameters by value and address
+* Passing arrays to functions
+* Dynamic memory allocation and dynamic arrays
 
 
 ## Operator overloading - Pages 63 - 80 in the book

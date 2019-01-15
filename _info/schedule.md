@@ -14,7 +14,7 @@ layout: default
 
 * "Closed" labs refer to your sections that you are registered for on GOLD. These are (50 minute discussion sections) and will be held on {{site.lab_times}} in PHELPS 3525
 * ATTENDANCE is REQUIRED in closed labs if you are working with a pair partner.
-* Open" labs refer to times that you can get help from TAs and tutors outside of your scheduled labs. Open labs will be held in the evenings in Phelps 3525 on Mondays (same day as closed labs), and in Phelps 2510 on all other days. Please check the detailed schedule below:
+* Open" labs refer to times that you can get help from TAs and tutors outside of your scheduled labs. Open labs will be held in the evenings in Phelps. Please check the detailed schedule below:
 
 <style>
 iframe { width: 100%;height:880px; overflow: scroll; }  

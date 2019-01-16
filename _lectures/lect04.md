@@ -1,7 +1,7 @@
 ---
 num: "lect04"
-desc: " Operator overloading"
-ready: false
+desc: "Operator overloading"
+ready: true
 pdfurl: /lectures/CS24_Lecture4.pdf
 annotatedpdfurl: /lectures/CS24_Lecture4_ann.pdf
 annotatedready: false

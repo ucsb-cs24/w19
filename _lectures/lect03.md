@@ -4,7 +4,7 @@ desc:  "The Big Four (lab01) "
 ready: true
 pdfurl: /lectures/CS24_Lecture3.pdf
 annotatedpdfurl: /lectures/CS24_Lecture3_ann.pdf
-annotatedready: false
+annotatedready: true
 lecture_date: 2019-01-14
 ---
 

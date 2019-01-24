@@ -1,7 +1,7 @@
 ---
 layout: lab
 num: lab02
-ready: false
+ready: true
 desc: "Implementing a linked list"
 assigned: 2019-01-24 9:00:00.00-8
 due: 2019-01-31 23:59:00.00-8
@@ -16,31 +16,23 @@ By the time you have completed this lab, you should be able to
 * Create, use and manage memory for simple linked lists
 * Implement functions that process linked lists
 
+# This lab must be done solo
 
 ## Step by Step Instructions
 
-## Step 1: Choose initial roles, create a directory and get files
-
-Get together with your lab partner, and decide who will be the pilot first. Switch roles after awhile - before either of you gets tired, bored or distracted. If your regular partner is more than 5 minutes late, ask the TA to pair you with someone else for this week.
-
-Log onto the pilot's account. If the pilot's account is not working, allow the navigator to log in instead. You will (both) work in this account for the rest of the lab.
-
-## Step 1a: Create a git repo, add your partner as collaborator
-
-* Create a repo for this lab on the pilot's github account following the process described in previous labs and also following the correct naming convention
-
-* The pilot should add the navigator as a collaborator on github. Navigator accept the invitation to gain joint ownership on the git repo
-
-## Step 1b: Set up directory for this lab (see detailed instructions in previous labs)
+## Step 1: Create a directory and get files
 
 
+
+
+* Create a repo for this lab in our class organization following the correct naming convention
 * Clone your repo in your cs24 directory on CSIL.  
 * Navigate to your starter-code directory and do a git pull to get the latest version of the code.
 * Change into your {{page.num}} git directory
 * Now copy all of the files for this lab from the starter-code directory to your git directory:
 
 ```
-cp ~/cs24/cs24-s18-starter-code/{{page.num}}/* ./
+cp ~/cs24/cs24-w19-starter-code/{{page.num}}/* ./
 ```
 
 Verify you got all the files and try to compile them as follows:
@@ -246,7 +238,7 @@ See that append, print and count all work. But the others need to be fixed.
 
 Use an editor (e.g., emacs or vim) to make the following changes to intlist.cpp - do not change any of the other files.
 
-* Fix the comment at the top to show your name(s) and the date.
+* Fix the comment at the top to show your name and the date.
 * Implement the sum method. See the count method for guidance.
 * Save, and then test your sum implementation - compile and execute testlist again. Verify sum is working before going on.
 * Push your code to github using the "git add .", "git commit" and "git push " commands
@@ -281,7 +273,7 @@ Empty list 2:
    [1 3]
 ```
 
-Ask yourself: What are the value semantics of an IntList object? With just the automatic copy constructor and assignment operator, won't copies be shallow? 
+Ask yourself: With just the automatic copy constructor and assignment operator, won't copies be shallow? 
 
 You will fix this problem by overloading the copy constructor and assignment operator. You should also implement the destructor. However before you begin, examine testrest.cpp. This file tests the functions your are about to implement.
 
@@ -328,11 +320,10 @@ Now run it in valgrind to make sure you don't have any memory leaks
 
 * Finally implement the overloaded assignment operator in intlist.cpp. To test it run <code>$ ./testrest 3</code>. If it doesn't crash, run it in valgrind to check for memory leaks
 
-Step 5: Submit intlist.cpp. (Only intlist.cpp)
+## Step 5: Submit intlist.cpp. (Only intlist.cpp)
 
-Log into your account on https://www.gradescope.com/ and navigate to our course site: CS24 Spring 2018. Select this assignment. Then click on the "Submit" button on the bottom right corner to make a submission. You will be given the option of uploading files from your local machine or submitting the code that is in a github repo. Select the second option and select your github repo for this assignment. You should receive 100/100 for a completely correct program.
+Log into your account on https://www.gradescope.com/ and navigate to our course site. Select this assignment. Then click on the "Submit" button on the bottom right corner to make a submission. You will be given the option of uploading files from your local machine or submitting the code that is in a github repo. Select the second option and select your github repo for this assignment. You should receive 100/100 for a completely correct program.
 
-If you are working with a partner, be sure that both partners' names are in a comment at the top of the source code file.
 
 Do beware that all parts must be working to earn any points at all from the Gradescope system.
 
@@ -342,7 +333,7 @@ Do beware that all parts must be working to earn any points at all from the Grad
 Each student must accomplish the following to earn full credit [50 total points] for this lab:
 
 * [100 points] intlist.cpp is saved, it has your name(s) in a comment at the top, it compiles and executes properly, and has been submitted with a score of 100/100 to the Gradescope system.
-* [50 points] Creation of github repo, writing readable code and pushing your code frequently to github
+
 
 
 

@@ -1,10 +1,10 @@
 ---
 num: "lect05"
-desc: "Linked-lists and rule of three (lab02) "
+desc: "Linked-lists (lab02) "
 ready: true
 pdfurl: /lectures/CS24_Lecture5.pdf
 annotatedpdfurl: /lectures/CS24_Lecture5_ann.pdf
-annotatedready: false
+annotatedready: true 
 lecture_date: 2019-01-23
 ---
 

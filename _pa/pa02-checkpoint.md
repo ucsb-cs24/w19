@@ -20,7 +20,7 @@ For the checkpoint, you must implement your linked list to store card hands (tho
 
 This portion requires you to define and implement the basics of your card class. You need to complete the portion of your code required to be able to read each player's cards from a file, store them in linked lists, and print each players hand. 
 
-## Example
+### Example
 
 Contents of `alice_cards.txt`:
 

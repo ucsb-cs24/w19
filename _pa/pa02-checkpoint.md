@@ -1,12 +1,14 @@
 ---
 num: pa02-checkpoint
-ready: false
+ready: true
 desc: "Linked-list implementation of a card game"
-assigned: 2019-01-25 09:00:00.00-8
-due: 2019-02-01 23:59:00.00-8
+assigned: 2019-01-28 09:00:00.00-8
+due: 2019-02-06 23:59:00.00-8
 ---
 
 <div markdown="1">
+
+## This assignment may be done solo or in pairs.
 
 # Introduction
 
@@ -14,13 +16,27 @@ due: 2019-02-01 23:59:00.00-8
 
 # Instructions
 
-For the checkpoint, you must implement your linked list to store card hands (though it does not need to have the full game functionality yet). You must also have an outline of how you plan to complete the rest of the project in the form of a main function (potentially just psuedo-code) and function stubs for your card class (more details on this later).
+The goal of the checkpoint is to get you thinking about how you plan on completing the rest of the assignment before jumping into coding it as well as to allow us to give you some initial feedback on your approach. Make sure you've read the entire project description carefully and spend some time thinking about what functionality your card list needs to have as well as how you will leverage this to code the game. 
 
-## Linked List Implementation
+## Design approach
 
-This portion requires you to define and implement the basics of your card class. You need to complete the portion of your code required to be able to read each player's cards from a file, store them in linked lists, and print each players hand. 
+For the checkpoint, you submit exactly six files with the names: Makefile, main.cpp, cards.cpp, cards.h, gameplan.cpp, testcards.cpp
 
-### Example
+
+* In cards.h, provide the definition of all the classes that you will use for this PA. You may define multiple classes in the same file. Prior to the definition of each class, write the pre-and post conditions for all the public member functions and non-member functions as a commented header (follow the style of stats.h from pa01). One of your classes must define a linked list to store cards.
+ 
+* Create stubs for class functions you will need (you must ensure that your `cards.h` and `cards.cpp` files still compile so that you can compile and run the test code. Don't implement any of the public functions yet.
+
+* In testcards.cpp, write code to unit test your class implementation.
+Organize your test code, so that there is one test function corresponding to each class, called test_<className>(). This function should in turn call other functions to unittest each of the memmber functions of that class. Write one test function to unit test each member function of each class, follow the naming convention: test_<className>_<memberFunction>(). Each of these functions should contain multiple test cases, paying special attention to edge cases. You may use other helper functions to organize your test code. You must test all the methods of your linked list, even if you plan to reuse your implementation from lab02.
+
+* Write a Makefile that produces two executables- game and unittest. The game executable should be compiled from cards.cpp and main.cpp and corresponds to your implementation of the game. The unittest executable should be compiled from cards.cpp and testcards.cpp and should run all of the unittests.
+
+* In cards.cpp, implement the method(s) to store card hands in a linked list (though it does not need to have the full game functionality yet) and to print the entire card hand for a player. 
+
+* In main.cpp, implement the portion of your code required to read each player's cards from a file, store them in linked lists, and print each players hand. This portion will be autograded on gradescope. See an example of the expected behavior below:
+
+## Example for checkpoint:
 
 Contents of `alice_cards.txt`:
 
@@ -62,21 +78,16 @@ h 9
 c 3
 ```
 
-## Design Approach
+* Create a gameplan.cpp,  which details how you will use your classes  to run the game. This can either be in code which makes calls to the stubs you've defined or psuedo-code which details how you will use these functions once they are fully defined. This `gameplan.cpp` is the start of your main for the final turn in for this project. 
 
-* The goal of this portion is to get you thinking about how you plan on completing the rest of the assignment before jumping into coding it as well as to allow us to give you some initial feedback on your approach. Make sure you've read the entire project description carefully and spend some time thinking about what functionality your card list needs to have as well as how you will leverage this to code the game. 
-
-* Create stubs for class functions you will need (you must ensure that your `cards.h` and `cards.cpp` files still compile so your linked list implementation will work). 
-
-* Create a `main2.cpp` which details how you will use your card class to run the game. This can either be in code which makes calls to the stubs you've defined or psuedo-code which details how you will use these functions once they are fully defined. This `main2.cpp` is the start of your main for the final turn in for this project. 
-
-* Your main focus when completing this section should be to clarify your thoughts on your code structure for this project and communicate that with your mentor through the stubs you declare in your card class and your `main2.cpp'
+* Your main focus when completing this section should be to clarify your thoughts on your code structure for this project and communicate that with your mentor.
 
 # Submission instructions 
 
-You must submit exactly five files with the names: Makefile, main.cpp, cards.cpp, cards.h, main2.cpp
+You must submit exactly six files with the names: Makefile, main.cpp, cards.cpp, cards.h, gameplan.cpp, testcards.cpp
 
 Submit these files to PA02-Checkpoint on gradescope. You should score 100% if you have completed the linked list implementation portion of this project. The rest of the points for this checkpoint will be given by your mentor who will check that you have completed the design approach portion of this project and your code style. 
 
+Also push your code on github. Include the commit message "CHECKPOINT SUBMISSION" when pushing your code to github. 
 
 Created by Jack Alexander, Jinjin Shao, Sierra Schwellenbach, and Diba Mirza

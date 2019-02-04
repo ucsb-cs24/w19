@@ -1,9 +1,9 @@
 ---
 layout: lab
 num: lab03
-ready: false
+ready: true
 desc: "Using g++, make and gdb"
-assigned: 2019-02-07 9:00:00.00-8
+assigned: 2019-02-04 9:00:00.00-8
 due: 2019-02-14 23:59:00.00-8
 ---
 
@@ -438,8 +438,7 @@ For help, type "help".
 Type "apropos word" to search for commands related to "word"...
 Reading symbols from buggy...done.
 (gdb) r CS16
-Starting program: /cs/faculty/dimirza/git/cs24-w18-lab-starter-code/lab02/buggy CS16
-Missing separate debuginfos, use: dnf debuginfo-install glibc-2.24-10.fc25.x86_64
+Starting program: /cs/faculty/dimirza/git/....
 terminate called after throwing an instance of 'std::logic_error'
   what():  basic_string::_M_construct null not valid
 

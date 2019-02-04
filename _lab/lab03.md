@@ -16,10 +16,8 @@ By the time you have completed this lab, you should be able to
 * Use basic gdb commands to debug a program
 
 
-# Lab partners and mentor groups
-You have been assigned a partner who has reported the same level of confidence and experience in programming as yourself. Find your pair partner and mentor at this link:
+# This lab may be done solor or with a partner
 
-[Pair partners and mentor groups for CS24](/info/mentor_groups/)
 
 # Step by Step Instructions
 
@@ -29,11 +27,11 @@ Partner up (and remember to switch roles after awhile). If your regular partner 
 
 This lab's pilot should log in. You will (both) work in this account for the rest of the lab.
 
-Create a ~/cs24/lab02 directory and make it your current directory:
+Create a ~/cs24/{{page.num}} directory and make it your current directory:
 
 ```
-mkdir ~/cs24/lab02
-cd ~/cs24/lab02
+mkdir ~/cs24/{{page.num}}
+cd ~/cs24/{{page.num}}
 ```
 
 Now navigate to your starter-code directory and do a git pull to get the latest version of the code
@@ -41,13 +39,13 @@ Now navigate to your starter-code directory and do a git pull to get the latest 
 ```
 cd ~/cs24/cs24-w19-starter-code/
 git pull
-cd ~/cs24/lab02/
+cd ~/cs24/{{page.num}}
 ```
 
-Now copy all of the files for this lab from the starter-code directory to your cs24/lab02 directory:
+Now copy all of the files for this lab from the starter-code directory to your cs24/{{page.num}} directory:
 
 ```
-cp ~/cs24/cs24-w19-starter-code/lab02/* ~/cs24/lab02/
+cp ~/cs24/cs24-w19-starter-code/l{{page.num}}/* ~/cs24/{{page.num}}/
 ```
 
 ## Step 2: Review compiling and linking with g++
@@ -538,6 +536,6 @@ Before you submit, rename buggyGPA.cpp to gpa.cpp as it is now bug free!
 
 ## Step 7: Submit your code on gradescope
 
-Log into your account on [https://www.gradescope.com/](https://www.gradescope.com/) and navigate to our course site: CS24 Spring 2018. Select this assignment. Then click on the "Submit" button on the bottom right corner to make a submission. You will be given the option of  uploading files from your local machine or submitting the code that is in a github repo. Select the second option and select your github repo for this assignment. You should receive 50/50 for a completely correct program.
+Log into your account on [https://www.gradescope.com/](https://www.gradescope.com/) and navigate to our course site. Select this assignment. Then click on the "Submit" button on the bottom right corner to make a submission. You will be given the option of  uploading files from your local machine or submitting the code that is in a github repo. Select the second option and select your github repo for this assignment. You should receive 50/50 for a completely correct program.
 
 

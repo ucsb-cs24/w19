@@ -3,8 +3,8 @@ layout: lab
 num: lab03
 ready: false
 desc: "Using g++, make and gdb"
-assigned: 2019-01-31 9:00:00.00-8
-due: 2019-02-07 23:59:00.00-8
+assigned: 2019-02-07 9:00:00.00-8
+due: 2019-02-14 23:59:00.00-8
 ---
 
 # Goals for this lab

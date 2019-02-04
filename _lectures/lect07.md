@@ -18,7 +18,7 @@ lecture_date: 2019-01-30
  - To use gdb, compile with the -g flag
  - Setting breakpoints (b)
  - Running programs that take arguments within gdb (r arguments)
- - Continue excution until breakpoint is reached (c)
+ - Continue execution until breakpoint is reached (c)
  - Stepping into functions with step (s)
  - Stepping over functions with next (n)
  - Re-running a program (r)

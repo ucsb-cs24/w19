@@ -45,7 +45,7 @@ cd ~/cs24/{{page.num}}
 Now copy all of the files for this lab from the starter-code directory to your cs24/{{page.num}} directory:
 
 ```
-cp ~/cs24/cs24-w19-starter-code/l{{page.num}}/* ~/cs24/{{page.num}}/
+cp ~/cs24/cs24-w19-starter-code/{{page.num}}/* ~/cs24/{{page.num}}/
 ```
 
 ## Step 2: Review compiling and linking with g++
@@ -369,7 +369,7 @@ Is it what you expected?
 
 ```
 (gdb) p courseGrades[0]@5
-$3 = {4, 0, 1.3852388523421298e-309, 5.4322263344105125e-312, 0}
+$4 = {4, 0, 1.3852388523421298e-309, 5.4322263344105125e-312, 0}
 ```
 
 Element at index 0 has been set to 4 which is what we expected.
@@ -389,9 +389,9 @@ We are still in the function, so you can examine the value of courseGrades again
 $4 = {4, 0, 4, 5.4322263344105125e-312, 0}
 ```
 
-Notice element at index 1 has been set to 0. If courseLetterGrades was properly populated, courseGrades would have had 4.0 at index 1. 
+Notice element at index 1 has been set to 0. If courseLetterGrades was correct to start with, courseGrades would have had 4.0 at index 1. 
 
-You can now clearly see the consequence  of not having courseGrades properly populated.
+You can now clearly see the consequence of the values in one of the input arrays, aka courseGrades on the behavior of your program.
 
 
 More about breakpoints: Put a breakpoint on line 28. Now you have two breakpoints set - this new one is number 2. You can disable it by entering "disable 2" (you could also use dis 2). 

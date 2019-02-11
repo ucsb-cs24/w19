@@ -1,7 +1,7 @@
 ---
 num: "lect09"
 desc: "Big-Oh: Analyzing the efficiency of algorithms"
-ready: false
+ready: true
 pdfurl: /lectures/CS24_Lecture9.pdf
 annotatedpdfurl: /lectures/CS24_Lecture9_ann.pdf
 annotatedready: false
@@ -13,7 +13,6 @@ lecture_date: 2019-02-11
 
 # Topics
 
-* Run time of programs - why you should care?
 * Challenges in measuring time efficiency and the pros/cons of different methods - absolute time, counting steps 
 * Measuring the impact of algorithms on running time (independent of implementation details/hardware/compiler....etc) - Count steps by detailed computer model of times to fetch, store, assign … 
 * O notation - Big Oh - asymptotic analysis and orders of growth, but also briefly Little O, Big Omega, Big Theta

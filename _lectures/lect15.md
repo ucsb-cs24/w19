@@ -1,6 +1,6 @@
 ---
 num: "lect15"
-desc: "Priority Queues (contd), Selecting data structures"
+desc: "Selecting data structures"
 ready: false
 pdfurl: /lectures/CS24_Lecture15.pdf
 annotatedpdfurl: /lectures/CS24_Lecture15_ann.pdf

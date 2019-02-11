@@ -1,6 +1,6 @@
 ---
 num: "lect11"
-desc: "Analyzing the running time of BST operations "
+desc: "Stacks (lab05): C++ templates, using the STL "
 ready: false
 pdfurl: /lectures/CS24_Lecture11.pdf
 annotatedpdfurl: /lectures/CS24_Lecture11_ann.pdf
@@ -11,14 +11,16 @@ lecture_date: 2019-02-20
 ## Code written in class
 [https://github.com/ucsb-cs24-w19-mirza/cs24-w19-lectures/tree/master/lec-11](https://github.com/ucsb-cs24-w19-mirza/cs24-w19-lectures/tree/master/lec-11)
 
-# Topics
 
 
-* Binary search in sorted arrays
-* Running times of operations supported by a BST: Min, Max, Search, Pre-decessor, Successor, Delete
-* Worst case running time of find on a BST
-* Running time of BST operations in terms of the height of the tree
-* Balanced BSTs
+## Stacks
+* Stack operations
+* Using the C++ STL stack contaner class
+* Prefix, infix and postfix notations
+* Review of lab05 (applications of stacks)
+	* checking if paranthesis in an infix expression are balanced
+	* Evaluating fully paranthesized infix expressions
+	* Evaluating postfix expressions
 
-* Running time complexity for balanced BSTs
+
 

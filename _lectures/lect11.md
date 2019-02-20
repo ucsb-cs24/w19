@@ -1,7 +1,7 @@
 ---
 num: "lect11"
-desc: "Stacks (lab05): C++ templates, using the STL "
-ready: false
+desc: "Stacks (lab05), C++ STL "
+ready: true
 pdfurl: /lectures/CS24_Lecture11.pdf
 annotatedpdfurl: /lectures/CS24_Lecture11_ann.pdf
 annotatedready: false

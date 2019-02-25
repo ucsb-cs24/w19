@@ -3,7 +3,7 @@ num: pa03-checkpoint
 ready: true
 desc: "Card game using Binary Search Trees"
 assigned: 2019-02-22 09:00:00.00-8
-due: 2019-03-1 23:59:00.00-8
+due: 2019-03-3 23:59:00.00-8
 ---
 
 # Introduction

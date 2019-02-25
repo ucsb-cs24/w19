@@ -1,6 +1,6 @@
 ---
 num: pa03-checkpoint
-ready: false
+ready: true
 desc: "Card game using Binary Search Trees"
 assigned: 2019-02-22 09:00:00.00-8
 due: 2019-03-1 23:59:00.00-8
@@ -45,7 +45,7 @@ As with pa02, there will be a checkpoint for this lab. For the checkpoint, you w
   BST to confirm that it works. These should also compile and should
   test all the functions of your BST.
 
-The checkpoint is worth 20% of your grade for pa03.
+The checkpoint is worth 5% of your grade for pa03.
 
 ## The game
 

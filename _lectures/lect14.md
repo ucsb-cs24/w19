@@ -1,7 +1,7 @@
 ---
 num: "lect14"
-desc: "Priority Queues (contd)"
-ready: false
+desc: "Under the hood of priority queues"
+ready: true
 pdfurl: /lectures/CS24_Lecture14.pdf
 annotatedpdfurl: /lectures/CS24_Lecture14_ann.pdf
 annotatedready: false

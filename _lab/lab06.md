@@ -1,7 +1,7 @@
 ---
 layout: lab
 num: lab06
-ready: false
+ready: true
 desc: "Implementing a heap"
 assigned: 2019-03-07 09:00:00.00-8
 due: 2019-03-14 23:59:00.00-7
@@ -27,12 +27,9 @@ Completing the survey carries course credit (1% of your overall grade), so pleas
 Here is the link to the survey:
 [Please click on this link to complete](http://bit.ly/2018-Anonymous-Mentor-Evals)
 
-You may use the following webpage to identify the mentors should you need it to answer the final question on the survey:
-[https://ucsb-cs24-s18.github.io/info/staff/](https://ucsb-cs24-s18.github.io/info/staff/)
 
-To get credit upload a screenshot of the final page of the completed survey on gradescope (lab06) and also show it to your mentor. You mentor should update your score manually on gradescope.
+To get credit show a screenshot of the final page of the completed survey on gradescope (lab06) to your TA. They will record your grade manually.
 
-**The remainder of the lab is on the heap data structure. We will talk about this data structure on Wednesday's lecture, so while you are welcome to read the writeup and go over the starter code, please don't attempt this lab unless you are already familiar with using the heap data structure. Instead, wait until we have covered the material on Wed. You may use the lab time to work on pa03**
 
 ## Step 1: Create a lab06 git repo and get the starter code
 
@@ -42,32 +39,17 @@ Select a pilot, log into the CSIL machines.
 
 ## Step 1a: Create a git repo, add your partner as collaborator
 
-* Create a repo for this lab on the pilot's github account (just like you did in lab00): To do this, open a browser and navigate to [www.github.com](www.github.com). Log into the pilot's github account. From the drop down menu on the left, select our class organization: ucsb-cs24-s18 and proceed to create a new repo. You may refer to the instructions in lab00. Follow this naming convention: If your github username is jgaucho and your partner's is alily, your should name your repo lab06_agaucho_alily (usernames appear in alphabetical order). Also you must set the visibity of your repo to be 'PRIVATE' when creating it. We will not repeat these instructions in subsequent labs.
+* Create a repo for this lab on the pilot's github account (just like you did in lab00): To do this, open a browser and navigate to [www.github.com](www.github.com). Log into the pilot's github account. From the drop down menu on the left, select our class organization: ucsb-cs24-w19-mirza and proceed to create a new repo. You may refer to the instructions in lab00. Follow this naming convention: If your github username is jgaucho and your partner's is alily, your should name your repo lab06_agaucho_alily (usernames appear in alphabetical order). Also you must set the visibity of your repo to be 'PRIVATE' when creating it. We will not repeat these instructions in subsequent labs.
 
 * The pilot should add the navigator as a collaborator on github, and the navigator should accept the request to join the repo. See instructions in previous labs
 
 ## Step 1b: Clone your git repo and get the starter code
 
-* Clone your repo in your cs24 directory on CSIL. If your repo is called lab06_jgaucho_alily, type the following commands:
+* Create a git repo and get the starter code.
+
+You should have the following files:
 
 ```
-cd ~/cs24
-git clone git@github.com:ucsb-cs24-s18/lab06_jgaucho_alily.git
-```
-
-Now navigate to your starter-code directory (cloned in a previous lab) and do a git pull to get the latest version of the code
-
-```
-cd ~/cs24/cs24-s18-lab-starter-code/
-git pull
-cd ~/cs24/lab06_jgauch_alily/
-```
-
-Now copy all of the files for this lab from the starter-code directory to your git repo directory:
-
-```
-cp ~/cs24/cs24-s18-starter-code/lab06/* ./
-
 -bash-4.3$ ls
 examheap.cpp heap.cpp heap.h
 ```

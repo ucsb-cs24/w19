@@ -1,10 +1,10 @@
 ---
 num: "lect14"
-desc: "Under the hood of priority queues"
+desc: "Under the hood of heaps and priority queues"
 ready: true
 pdfurl: /lectures/CS24_Lecture14.pdf
 annotatedpdfurl: /lectures/CS24_Lecture14_ann.pdf
-annotatedready: false
+annotatedready: true
 lecture_date: 2019-03-06
 ---
 
